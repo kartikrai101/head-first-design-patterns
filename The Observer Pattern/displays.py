@@ -9,6 +9,7 @@ class DisplayElement(ABC):
         pass
 
 
+# concrete display screen
 class CurrentConditionsDisplay(Observer, DisplayElement):
     temperature = 0.0
     humidity = 0.0

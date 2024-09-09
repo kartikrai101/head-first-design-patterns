@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-# interface for the observer (subscriber)
+# create an interface for the observers
 class Observer(ABC):
     @abstractmethod
     def update(self, temperature: float, pressure: float, humidity: float):

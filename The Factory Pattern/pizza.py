@@ -6,7 +6,7 @@ class Pizza(ABC):
     name: str
     dough: str
     sauce: str
-    toppings: List[str]
+    toppings: List[str] = []
 
     def prepare(self):
         print(f'Preparing {self.name}')
@@ -23,7 +23,7 @@ class Pizza(ABC):
         print('Cutting the pizza into diagonal slices')
 
     def box(self):
-        print('Packing the pizza in Kartik')
+        print('Packing the pizza in Kartik Pizzeria Shop!')
 
     def get_name(self):
         return self.name
@@ -44,7 +44,6 @@ class NYVeggiePizza(Pizza):
         self.name = "NY Style Veggie Pizza"
         self.sauce = "Tango Sauce"
         self.dough = "Thin crust dough"
-
         self.toppings.append("Onion")
 
 

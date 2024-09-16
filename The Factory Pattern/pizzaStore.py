@@ -27,11 +27,11 @@ class NYPizzaStore(PizzaStore):
 
     def create_pizza(self, pizza_type: str):
         if pizza_type == 'cheese':
-            pizza = NYCheesePizza()
+            self.pizza = NYCheesePizza()
         elif pizza_type == 'veggie':
-            pizza = NYVeggiePizza()
+            self.pizza = NYVeggiePizza()
         elif pizza_type == 'pepperoni':
-            pizza = NYPepperoniPizza()
+            self.pizza = NYPepperoniPizza()
         else:
             print("Sorry! We don't serve that pizza YET ;)")
 
@@ -43,12 +43,12 @@ class ChicagoPizzaStore(PizzaStore):
 
     def create_pizza(self, pizza_type: str):
         if pizza_type == 'cheese':
-            pizza = ChicagoCheesePizza()
+            self.pizza = ChicagoCheesePizza()
         elif pizza_type == 'veggie':
-            pizza = ChicagoVeggiePizza()
+            self.pizza = ChicagoVeggiePizza()
         elif pizza_type == 'pepperoni':
-            pizza = ChicagoPepperoniPizza()
+            self.pizza = ChicagoPepperoniPizza()
         else:
             print("Sorry! We don't serve that pizza YET ;)")
 
-        return pizza
+        return self.pizza

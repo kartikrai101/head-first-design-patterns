@@ -1,9 +1,10 @@
 from abc import ABC, abstractmethod
+from pizza import NYPepperoniPizza, NYCheesePizza, NYVeggiePizza, ChicagoCheesePizza, ChicagoVeggiePizza, ChicagoPepperoniPizza, Pizza
 
 
 # create the abstract pizza store
 class PizzaStore(ABC):
-    @abstractmethod
+    @abstractmethod  # This is the factory method
     def create_pizza(self, pizza_type: str):
         pass
 
@@ -34,7 +35,7 @@ class NYPizzaStore(PizzaStore):
         else:
             print("Sorry! We don't serve that pizza YET ;)")
 
-        return pizza
+        return self.pizza
 
 
 class ChicagoPizzaStore(PizzaStore):

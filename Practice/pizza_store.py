@@ -22,4 +22,31 @@ class PizzaStore(ABC):
 
 
 # create concrete pizza stores
+class NYPizzaStore(PizzaStore):
+    pizza: Pizza
 
+    def create_pizza(self, pizza_type: str) -> Pizza:
+        # using conditions, create the required pizza instance and return it
+        if pizza_type == 'cheese':
+            self.pizza = NYCheesePizza()
+        elif pizza_type == 'veggie':
+            self.pizza = NYVeggiePizza()
+        else:
+            print("We don't serve that pizza, YET ;)")
+
+        return self.pizza
+
+
+class ChicagoPizzaStore(PizzaStore):
+    pizza: Pizza
+
+    def create_pizza(self, pizza_type: str) -> Pizza:
+        # using conditions, create the required pizza instance and return it
+        if pizza_type == 'cheese':
+            self.pizza = ChicagoCheesePizza()
+        elif pizza_type == 'veggie':
+            self.pizza = ChicagoVeggiePizza()
+        else:
+            print("We don't serve that pizza, YET ;)")
+
+        return self.pizza

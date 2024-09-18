@@ -4,7 +4,7 @@ from ingredients import Dough, Sauce, Cheese, Veggies, Clams, Pepperoni
 from ingredient_factories import IngredientsFactory
 
 
-# abstract pizza class
+# ------------------------------------ abstract pizza class ------------------------------------
 class Pizza(ABC):
     name: str
     dough: Dough
@@ -16,6 +16,10 @@ class Pizza(ABC):
 
     @abstractmethod
     def prepare(self) -> None:
+        pass
+
+    @abstractmethod
+    def list_ingredients(self) -> None:
         pass
 
     def bake(self):
@@ -34,7 +38,7 @@ class Pizza(ABC):
         return self.name
 
 
-# concrete pizzas
+#  ------------------------------------ concrete pizza classes ------------------------------------
 class CheesePizza(Pizza):
     factory: IngredientsFactory
 
@@ -46,6 +50,11 @@ class CheesePizza(Pizza):
         self.dough = self.factory.create_dough()
         self.cheese = self.factory.create_cheese()
         self.sauce = self.factory.create_sauce()
+
+    def list_ingredients(self) -> None:
+        print(self.dough.get_name())
+        print(self.cheese.get_name())
+        print(self.sauce.get_name())
 
 
 class ClamPizza(Pizza):
@@ -61,6 +70,12 @@ class ClamPizza(Pizza):
         self.sauce = self.factory.create_sauce()
         self.clams = self.factory.create_clams()
 
+    def list_ingredients(self) -> None:
+        print(self.dough.get_name())
+        print(self.cheese.get_name())
+        print(self.sauce.get_name())
+        print(self.clams.get_name())
+
 
 class PepperoniPizza(Pizza):
     factory: IngredientsFactory
@@ -74,3 +89,9 @@ class PepperoniPizza(Pizza):
         self.cheese = self.factory.create_cheese()
         self.sauce = self.factory.create_sauce()
         self.pepperoni = self.factory.create_pepperoni()
+
+    def list_ingredients(self) -> None:
+        print(self.dough.get_name())
+        print(self.cheese.get_name())
+        print(self.sauce.get_name())
+        print(self.pepperoni.get_name())

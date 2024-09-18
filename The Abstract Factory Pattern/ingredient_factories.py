@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
+from ingredients import Dough, Sauce, Cheese, Veggies, Clams, Pepperoni, ThickCrustDough, ThinCrustDough, SlicedPepperoni, FrozenClams, FreshClams, MozarellaCheese, ReggianoCheese, Onion, Garlic, Olive, Spinach, MarinaraSauce, Mushroom, PlumTomatoSauce
 
 
 # create abstract class for ingredients factory that will be responsible for creating all tne pizza ingredients

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from receivers import Light, Stereo, Fan
+from receivers import Light, Stereo, Fan, FancyFan
 
 
 #  --------------------------------- create the command interface class ---------------------------------
@@ -124,3 +124,55 @@ class StereoOffCommand(Command):
         self.stereo.on()
         self.stereo.set_cd()
         self.stereo.set_volume()
+
+
+# ------------------------------------ concrete command for FANCY FAN HIGH action -----------------------------------
+class FancyFanHighCommand(Command):
+    fancy_fan: FancyFan
+    prev_speed: int  # local state to keep track of the previous speed of the fan
+
+    def __init__(self, fancy_fan: FancyFan):
+        self.fancy_fan = fancy_fan
+
+    def execute(self):
+        # before we change the speed of the fan, we need to record its previous speed, so we'll be able to undo it
+        self.prev_speed = self.fancy_fan.get_speed()
+        self.fancy_fan.high()
+
+    def undo(self):
+        if self.prev_speed == self.fancy_fan.HIGH:
+            self.fancy_fan.high()
+        elif self.prev_speed == self.fancy_fan.MEDIUM:
+            self.fancy_fan.medium()
+        elif self.prev_speed == self.fancy_fan.LOW:
+            self.fancy_fan.low()
+        elif self.prev_speed == self.fancy_fan.OFF:
+            self.fancy_fan.off()
+        print(f'The previous speed was: {self.prev_speed}')
+        print(f'The new speed is: {self.fancy_fan.get_speed()}')
+
+
+# ------------------------------------ concrete command for FANCY FAN LOW action -----------------------------------
+class FancyFanLowCommand(Command):
+    fancy_fan: FancyFan
+    prev_speed: int  # local state to keep track of the previous speed of the fan
+
+    def __init__(self, fancy_fan: FancyFan):
+        self.fancy_fan = fancy_fan
+
+    def execute(self):
+        # before we change the speed of the fan, we need to record its previous speed, so we'll be able to undo it
+        self.prev_speed = self.fancy_fan.get_speed()
+        self.fancy_fan.low()
+
+    def undo(self):
+        print(f'The current speed is: {self.fancy_fan.get_speed()}')
+        if self.prev_speed == self.fancy_fan.HIGH:
+            self.fancy_fan.high()
+        elif self.prev_speed == self.fancy_fan.MEDIUM:
+            self.fancy_fan.medium()
+        elif self.prev_speed == self.fancy_fan.LOW:
+            self.fancy_fan.low()
+        elif self.prev_speed == self.fancy_fan.OFF:
+            self.fancy_fan.off()
+        print(f'The new speed after undo is: {self.fancy_fan.get_speed()}')

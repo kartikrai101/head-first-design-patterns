@@ -1,10 +1,10 @@
-from commands import LightOnCommand, LightOffCommand, FanOnCommand, FanOffCommand, StereoOnWithCD, StereoOffCommand
-from receivers import Light, Fan, Stereo
+from commands import LightOnCommand, LightOffCommand, FanOnCommand, FanOffCommand, StereoOnWithCD, StereoOffCommand, FancyFanHighCommand, FancyFanLowCommand
+from receivers import Light, Fan, Stereo, FancyFan
 from remote_control import RemoteControl
 
 # Remote Controller -> Invoker
-# Light/Fan/Stereo -> Receivers
-# LightOnCommand/FanOffCommand/StereoOffCommand -> Concrete Commands
+# Light/Fan/Stereo/FancyFan -> Receivers
+# LightOnCommand/FanOffCommand/StereoOffCommand/FancyFanHighCommand -> Concrete Commands
 # main function -> Client
 
 # The command object is responsible for decoupling the invoker (the one that makes some request) and the Receivers (the
@@ -26,6 +26,7 @@ def main():
     kitchen_light = Light("Kitchen")
     ceiling_fan = Fan("Ceiling")
     stereo = Stereo("Living Room")
+    fancy_fan = FancyFan("Drawing Room")
 
     # create light command objects
     living_room_light_on = LightOnCommand(living_room_light)
@@ -41,11 +42,16 @@ def main():
     stereo_on_with_cd = StereoOnWithCD(stereo)
     stereo_off = StereoOffCommand(stereo)
 
+    # create fancy fan command objects
+    fancy_fan_high = FancyFanHighCommand(fancy_fan)
+    fancy_fan_low = FancyFanLowCommand(fancy_fan)
+
     # set the commands for remote controller
     remote_controller.set_command(0, living_room_light_on, living_room_light_off)
     remote_controller.set_command(1, kitchen_light_on, kitchen_light_off)
     remote_controller.set_command(2, ceiling_fan_on, ceiling_fan_off)
     remote_controller.set_command(3, stereo_on_with_cd, stereo_off)
+    remote_controller.set_command(4, fancy_fan_high, fancy_fan_low)
 
     # now let's press the on and off buttons of the remote controller to see its behavior
     remote_controller.on_button_pushed(0)
@@ -58,6 +64,11 @@ def main():
     remote_controller.on_button_pushed(3)
     remote_controller.off_button_pushed(3)
     remote_controller.undo_button_pushed()  # undoing the stereo off action
+
+    # checking the working of undo operation on the fancy fan
+    remote_controller.on_button_pushed(4)
+    remote_controller.off_button_pushed(4)
+    remote_controller.undo_button_pushed()
 
 
 if __name__ == "__main__":

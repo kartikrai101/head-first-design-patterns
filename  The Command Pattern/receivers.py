@@ -53,7 +53,7 @@ class Fan:
 # a fan class that supports setting up different speeds of the fan
 class FancyFan:
     fan_location: str
-    speed: int
+    speed: int = 0
     HIGH: int = 3
     MEDIUM: int = 2
     LOW: int = 1

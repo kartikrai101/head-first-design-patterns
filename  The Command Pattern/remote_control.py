@@ -1,5 +1,5 @@
 from typing import List
-from commands import Command
+from commands import Command, NoCommand
 
 
 # here we will implement the invoker of our system, the Remote Control

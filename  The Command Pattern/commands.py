@@ -9,6 +9,12 @@ class Command(ABC):
         pass
 
 
+# create a default NoCommand class
+class NoCommand(Command):
+    def execute(self):
+        print("No command has been initialized here yet!  :(")
+
+
 # create concrete command for LIGHT ON action
 class LightOnCommand(Command):
     light: Light

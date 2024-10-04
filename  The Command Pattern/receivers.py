@@ -1,4 +1,4 @@
-# here we will have different appliance classes
+# here we will have different receiver classes - Basically the appliances
 class Light:
     light_type: str
 
@@ -43,3 +43,4 @@ class Fan:
 
     def off(self):
         print(f'Turning off the {self.fan_type} fan')
+

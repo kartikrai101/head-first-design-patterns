@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from receivers import Light, Stereo
+from receivers import Light, Stereo, Fan
 
 
 # create the command interface class
@@ -29,3 +29,62 @@ class LightOffCommand(Command):
 
     def execute(self):
         self.light.off()
+
+
+# concrete command for FAN ON action
+class FanOnCommand(Command):
+    fan: Fan
+
+    def __init__(self, fan_type: Fan):
+        self.fan = fan_type
+
+    def execute(self):
+        self.fan.on()
+
+
+# concrete command for FAN OFF action
+class FanOffCommand(Command):
+    fan: Fan
+
+    def __init__(self, fan_type: Fan):
+        self.fan = fan_type
+
+    def execute(self):
+        self.fan.off()
+
+
+# concrete command for STEREO ON WITH CD action
+class StereoOnWithCD(Command):
+    stereo: Stereo
+
+    def __int__(self, stereo: Stereo):
+        self.stereo = stereo
+
+    def execute(self):
+        self.stereo.on()
+        self.stereo.set_cd()
+        self.stereo.set_volume()
+
+
+# concrete command for STEREO ON WITH DVD action
+class StereoOnWithDVD(Command):
+    stereo: Stereo
+
+    def __init__(self, stereo: Stereo):
+        self.stereo = stereo
+
+    def execute(self):
+        self.stereo.on()
+        self.stereo.set_dvd()
+        self.stereo.set_volume()
+
+
+# concrete command for STEREO OFF action
+class StereoOffCommand(Command):
+    stereo: Stereo
+
+    def __init__(self, stereo: Stereo):
+        self.stereo = stereo
+
+    def execute(self):
+        self.stereo.off()

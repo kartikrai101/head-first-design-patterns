@@ -4,21 +4,21 @@ from commands import Command, NoCommand
 
 # here we will implement the invoker of our system, the Remote Control
 class RemoteControl:
-    onCommands: List[Command]
-    offCommands: List[Command]
+    on_commands: List[Command]
+    off_commands: List[Command]
 
     def __init__(self):
+        # initialize the remote controller slots with NoCommand objects by default
         no_command: Command = NoCommand()
-        for i in range(0, 7):
-            self.onCommands[i] = no_command
-            self.offCommands[i] = no_command
+        self.on_commands = [no_command] * 7
+        self.off_commands = [no_command] * 7
 
     def set_command(self, slot: int, on_command: Command, off_command: Command):
-        self.onCommands[slot] = on_command
-        self.offCommands[slot] = off_command
+        self.on_commands[slot] = on_command
+        self.off_commands[slot] = off_command
 
     def on_button_pushed(self, slot: int):
-        self.onCommands[slot].execute()
+        self.on_commands[slot].execute()
 
     def off_button_pushed(self, slot: int):
-        self.offCommands[slot].execute()
+        self.off_commands[slot].execute()

@@ -13,23 +13,28 @@ class Light:
 
 
 class Stereo:
+    stereo_type: str
+
+    def __init__(self, stereo_type: str):
+        self.stereo_type = stereo_type
+
     def on(self):
-        print("Turning on the stereo!")
+        print(f"Turning on the {self.stereo_type} stereo!")
 
     def off(self):
-        print("Turning off the stereo!")
+        print(f"Turning off the {self.stereo_type} stereo!")
 
     def set_cd(self):
-        print("Setting up the CD inside the stereo...")
+        print(f"Setting up the CD inside the {self.stereo_type} stereo...")
 
     def set_dvd(self):
-        print("Setting up the DVD inside the stereo...")
+        print(f"Setting up the DVD inside the {self.stereo_type} stereo...")
 
-    def setRadio(self):
-        print("Setting up the radio...")
+    def set_radio(self):
+        print(f"Setting up the {self.stereo_type} radio...")
 
     def set_volume(self):
-        print("Setting up the stereo volume...")
+        print(f"Setting up the {self.stereo_type} stereo volume...")
 
 
 class Fan:

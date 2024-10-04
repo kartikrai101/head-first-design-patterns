@@ -63,7 +63,7 @@ class FanOffCommand(Command):
 class StereoOnWithCD(Command):
     stereo: Stereo
 
-    def __int__(self, stereo: Stereo):
+    def __init__(self, stereo: Stereo):
         self.stereo = stereo
 
     def execute(self):

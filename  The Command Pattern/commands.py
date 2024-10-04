@@ -9,7 +9,7 @@ class Command(ABC):
         pass
 
 
-# create concrete command for light on action
+# create concrete command for LIGHT ON action
 class LightOnCommand(Command):
     light: Light
 
@@ -20,7 +20,7 @@ class LightOnCommand(Command):
         self.light.on()
 
 
-# create concrete command for light off action
+# create concrete command for LIGHT OFF action
 class LightOffCommand(Command):
     light: Light
 

@@ -1,4 +1,4 @@
-# here we will have different receiver classes - Basically the appliances
+# here we will have different receiver classes - Basically the appliances that we will be controlling
 class Light:
     light_type: str
 

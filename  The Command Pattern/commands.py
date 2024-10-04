@@ -2,20 +2,20 @@ from abc import ABC, abstractmethod
 from receivers import Light, Stereo, Fan
 
 
-# create the command interface class
+#  --------------------------------- create the command interface class ---------------------------------
 class Command(ABC):
     @abstractmethod
     def execute(self):
         pass
 
 
-# create a default NoCommand class
+#  --------------------------------- create a default NoCommand class ---------------------------------
 class NoCommand(Command):
     def execute(self):
         print("No command has been initialized here yet!  :(")
 
 
-# create concrete command for LIGHT ON action
+#  --------------------------------- create concrete command for LIGHT ON action ---------------------------------
 class LightOnCommand(Command):
     light: Light
 
@@ -26,7 +26,7 @@ class LightOnCommand(Command):
         self.light.on()
 
 
-# create concrete command for LIGHT OFF action
+# --------------------------------- create concrete command for LIGHT OFF action -----------------------------------
 class LightOffCommand(Command):
     light: Light
 
@@ -37,7 +37,7 @@ class LightOffCommand(Command):
         self.light.off()
 
 
-# concrete command for FAN ON action
+# ------------------------------------ concrete command for FAN ON action -----------------------------------
 class FanOnCommand(Command):
     fan: Fan
 
@@ -48,7 +48,7 @@ class FanOnCommand(Command):
         self.fan.on()
 
 
-# concrete command for FAN OFF action
+#  --------------------------------- concrete command for FAN OFF action ---------------------------------
 class FanOffCommand(Command):
     fan: Fan
 
@@ -59,7 +59,7 @@ class FanOffCommand(Command):
         self.fan.off()
 
 
-# concrete command for STEREO ON WITH CD action
+#  --------------------------------- concrete command for STEREO ON WITH CD action ---------------------------------
 class StereoOnWithCD(Command):
     stereo: Stereo
 
@@ -72,7 +72,7 @@ class StereoOnWithCD(Command):
         self.stereo.set_volume()
 
 
-# concrete command for STEREO ON WITH DVD action
+#  --------------------------------- concrete command for STEREO ON WITH DVD action ---------------------------------
 class StereoOnWithDVD(Command):
     stereo: Stereo
 
@@ -85,7 +85,7 @@ class StereoOnWithDVD(Command):
         self.stereo.set_volume()
 
 
-# concrete command for STEREO OFF action
+#  --------------------------------- concrete command for STEREO OFF action ---------------------------------
 class StereoOffCommand(Command):
     stereo: Stereo
 

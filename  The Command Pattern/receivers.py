@@ -49,3 +49,31 @@ class Fan:
     def off(self):
         print(f'Turning off the {self.fan_type} fan')
 
+
+# a fan class that supports setting up different speeds of the fan
+class FancyFan:
+    fan_location: str
+    speed: int
+    HIGH: int = 3
+    MEDIUM: int = 2
+    LOW: int = 1
+    OFF: int = 0
+
+    def __init__(self, fan_location: str):
+        self.fan_location = fan_location
+
+    def high(self):
+        self.speed = self.HIGH
+
+    def low(self):
+        self.speed = self.LOW
+
+    def medium(self):
+        self.speed = self.MEDIUM
+
+    def off(self):
+        self.speed = self.OFF
+        print(f"Turned the {self.fan_location} off.")
+
+    def get_speed(self) -> int:
+        return self.speed

@@ -50,12 +50,14 @@ def main():
     # now let's press the on and off buttons of the remote controller to see its behavior
     remote_controller.on_button_pushed(0)
     remote_controller.off_button_pushed(0)
+    remote_controller.undo_button_pushed()  # undoing the light off action
     remote_controller.on_button_pushed(1)
     remote_controller.off_button_pushed(1)
     remote_controller.on_button_pushed(2)
     remote_controller.off_button_pushed(2)
     remote_controller.on_button_pushed(3)
     remote_controller.off_button_pushed(3)
+    remote_controller.undo_button_pushed()  # undoing the stereo off action
 
 
 if __name__ == "__main__":

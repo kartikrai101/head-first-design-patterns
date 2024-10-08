@@ -25,8 +25,8 @@ class TheaterLights:
     def off(self):
         print("Turning off the theater lights.")
 
-    def dim(self):
-        print("Dimming the theater lights...")
+    def dim(self, level: int):
+        print(f"Dimming the theater lights to {level}")
 
 
 class Tuner:
@@ -63,8 +63,8 @@ class CdPlayer:
     def pause(self):
         print("Pausing the show.")
 
-    def play(self):
-        print("Playing the show.")
+    def play(self, show_name: str):
+        print(f"Playing the show {show_name}")
 
     def stop(self):
         print("Stopped the show.")
@@ -85,8 +85,8 @@ class DvdPlayer:
     def pause(self):
         print("Pausing the show.")
 
-    def play(self):
-        print("Playing the show.")
+    def play(self, show_name: str):
+        print(f"Playing the show {show_name}")
 
     def stop(self):
         print("Stopped the show.")
@@ -120,24 +120,19 @@ class Amplifier:
     cd_player: CdPlayer
     mode = None
 
-    def __init__(self, tuner, dvd_player, cd_player):
-        self.tuner = tuner
-        self.dvd_player = dvd_player
-        self.cd_player = cd_player
-
     def on(self):
         print("Tuning on the amplifier")
 
     def off(self):
         print("Turning off the amplifier")
 
-    def set_cd(self):
+    def set_cd(self, cd_player: CdPlayer):
         print("Setting up the CD mode for the amplifier")
-        self.cd_player.on()
+        self.cd_player = cd_player
 
-    def set_dvd(self):
+    def set_dvd(self, dvd_player: DvdPlayer):
         print("Setting up the DVD mode for the amplifier")
-        self.dvd_player.on()
+        self.dvd_player = dvd_player
 
     def set_stereo_sound(self):
         print("Setting up stereo sound for the amplifier")
@@ -145,9 +140,9 @@ class Amplifier:
     def set_surround_sound(self):
         print("Setting up the surround sound for the amplifier")
 
-    def set_tuner(self):
+    def set_tuner(self, tuner: Tuner):
         print("Setting up the tuner")
-        self.tuner.on()
+        self.tuner = tuner
 
-    def set_volume(self):
-        print("Setting up the volume")
+    def set_volume(self, volume: int):
+        print(f"Setting up the volume to {volume}")

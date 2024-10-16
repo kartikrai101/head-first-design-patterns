@@ -52,3 +52,16 @@ class BreakfastMenuIterator(Iterator):
             return False
         else:
             return True
+
+
+# define the iterator class for the Cafe Menu
+class CafeMenuIterator(Iterator):
+    menu_items: dict = {}
+    position: int = 0
+
+    def __init__(self, menu_items: dict):
+        self.menu_items = menu_items
+
+    def has_next(self):
+
+    def next(self):

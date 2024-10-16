@@ -1,4 +1,4 @@
-from menus import BreakfastMenu, DinerMenu
+from menus import BreakfastMenu, DinerMenu, CafeMenu
 from iterators import Iterator
 
 
@@ -6,18 +6,24 @@ from iterators import Iterator
 class Waitress:
     diner_menu: DinerMenu
     breakfast_menu: BreakfastMenu
+    cafe_menu: CafeMenu
 
-    def __init__(self, diner_menu: DinerMenu, breakfast_menu: BreakfastMenu):
+    def __init__(self, diner_menu: DinerMenu, breakfast_menu: BreakfastMenu, cafe_menu: CafeMenu):
         self.diner_menu = diner_menu
         self.breakfast_menu = breakfast_menu
+        self.cafe_menu = cafe_menu
 
     def print_menu(self):
         diner_menu_it = self.diner_menu.create_iterator()
         breakfast_menu_it = self.breakfast_menu.create_iterator()
+        cafe_menu_it = self.cafe_menu.create_iterator()
+
         print("---------------------- Here's our today's special BREAKFAST MENU: ---------------------- \n")
         self.display_menu(breakfast_menu_it)
         print("---------------------- Here's our today's special LUNCH MENU: ---------------------- \n")
         self.display_menu(diner_menu_it)
+        print("---------------------- Here's our today's special DINNER MENU: ---------------------- \n")
+        self.display_menu(cafe_menu_it)
 
     def display_menu(self, itr: Iterator):
         while itr.has_next():

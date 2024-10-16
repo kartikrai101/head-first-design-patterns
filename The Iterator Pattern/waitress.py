@@ -14,9 +14,9 @@ class Waitress:
     def print_menu(self):
         diner_menu_it = self.diner_menu.create_iterator()
         breakfast_menu_it = self.breakfast_menu.create_iterator()
-        print("---------------------- Here's our today's special breakfast menu: ---------------------- \n")
+        print("---------------------- Here's our today's special BREAKFAST MENU: ---------------------- \n")
         self.display_menu(breakfast_menu_it)
-        print("---------------------- Here's our today's special Lunch menu: ---------------------- \n")
+        print("---------------------- Here's our today's special LUNCH MENU: ---------------------- \n")
         self.display_menu(diner_menu_it)
 
     def display_menu(self, itr: Iterator):
@@ -24,4 +24,4 @@ class Waitress:
             item = itr.next()
             print(f"Name: {item.get_name()}")
             print(f"Description: {item.get_description()}")
-            print(f"Price: {item.get_price()}")
+            print(f"Price: {item.get_price()} \n")

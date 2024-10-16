@@ -1,5 +1,6 @@
 from typing import List
 from menuItem import MenuItem
+from iterators import BreakfastMenuIterator, DinerMenuIterator, Iterator
 
 
 # define class for Diner Menu
@@ -16,8 +17,9 @@ class DinerMenu:
         new_item = MenuItem(name, desc, price, is_veg)
         self.menu_items.append(new_item)
 
-    def get_menu_items(self):
-        return self.menu_items
+    def create_iterator(self) -> Iterator:
+        new_iterator = DinerMenuIterator(self.menu_items)
+        return new_iterator
 
 
 # define class for Breakfast Menu
@@ -34,5 +36,7 @@ class BreakfastMenu:
         new_item = MenuItem(name, desc, price, is_veg)
         self.menu_items.append(new_item)
 
-    def get_menu_items(self):
-        return self.menu_items
+    # this function will create an iterator for the Breakfast Menu and return that iterator to the caller
+    def create_iterator(self) -> Iterator:
+        new_iterator = BreakfastMenuIterator(self.menu_items)
+        return new_iterator

@@ -61,7 +61,16 @@ class CafeMenuIterator(Iterator):
 
     def __init__(self, menu_items: dict):
         self.menu_items = menu_items
+        self.keys = list(menu_items.keys())
+        self.position = 0
 
     def has_next(self):
+        return self.position < len(self.keys)
 
     def next(self):
+        if not self.has_next():
+            raise StopIteration("No more items to iterate.")
+        key = self.keys[self.position]  # get the current key
+        value = self.menu_items[key]    # get the corresponding value
+        self.position += 1
+        return value

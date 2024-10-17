@@ -1,10 +1,22 @@
+from abc import ABC, abstractmethod
 from typing import List
 from menuItem import MenuItem
 from iterators import BreakfastMenuIterator, DinerMenuIterator, Iterator, CafeMenuIterator
 
 
+# define an interface for menus
+class Menu(ABC):
+    @abstractmethod
+    def add_item(self, name: str, desc: str, price: float, is_veg: bool):
+        pass
+
+    @abstractmethod
+    def create_iterator(self) -> Iterator:
+        pass
+
+
 # define class for Diner Menu
-class DinerMenu:
+class DinerMenu(Menu):
     menu_items: List[MenuItem] = []
 
     def __init__(self):
@@ -27,7 +39,7 @@ class DinerMenu:
 
 
 # define class for Breakfast Menu
-class BreakfastMenu:
+class BreakfastMenu(Menu):
     menu_items: List[MenuItem] = []
 
     def __init__(self):
@@ -51,7 +63,7 @@ class BreakfastMenu:
 
 
 # define class for Cafe Menu - Uses dict to store menu items {name: menu_item}
-class CafeMenu:
+class CafeMenu(Menu):
     menu_items: dict
 
     def __init__(self):

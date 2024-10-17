@@ -7,7 +7,7 @@ def main():
     breakfast_menu = BreakfastMenu()
     cafe_menu = CafeMenu()
 
-    waitress = Waitress(diner_menu, breakfast_menu, cafe_menu)
+    waitress = Waitress([diner_menu, breakfast_menu, cafe_menu])
     waitress.print_menu()
 
 

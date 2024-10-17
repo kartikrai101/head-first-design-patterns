@@ -1,29 +1,19 @@
-from menus import BreakfastMenu, DinerMenu, CafeMenu
+from typing import List
+from menus import BreakfastMenu, DinerMenu, CafeMenu, Menu
 from iterators import Iterator
 
 
 # the waitress is expected to print the breakfast menu or the diner menu without having to consult with the cook
 class Waitress:
-    diner_menu: DinerMenu
-    breakfast_menu: BreakfastMenu
-    cafe_menu: CafeMenu
+    menu_list: List[Menu] = []
 
-    def __init__(self, diner_menu: DinerMenu, breakfast_menu: BreakfastMenu, cafe_menu: CafeMenu):
-        self.diner_menu = diner_menu
-        self.breakfast_menu = breakfast_menu
-        self.cafe_menu = cafe_menu
+    def __init__(self, menus: List[Menu]):
+        self.menu_list = menus
 
     def print_menu(self):
-        diner_menu_it = self.diner_menu.create_iterator()
-        breakfast_menu_it = self.breakfast_menu.create_iterator()
-        cafe_menu_it = self.cafe_menu.create_iterator()
-
-        print("---------------------- Here's our today's special BREAKFAST MENU: ---------------------- \n")
-        self.display_menu(breakfast_menu_it)
-        print("---------------------- Here's our today's special LUNCH MENU: ---------------------- \n")
-        self.display_menu(diner_menu_it)
-        print("---------------------- Here's our today's special DINNER MENU: ---------------------- \n")
-        self.display_menu(cafe_menu_it)
+        for menu in self.menu_list:
+            menu_iterator = menu.create_iterator()
+            self.display_menu(menu_iterator)
 
     def display_menu(self, itr: Iterator):
         while itr.has_next():

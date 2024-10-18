@@ -7,6 +7,7 @@ def main():
     breakfast_menu = BreakfastMenu()
     cafe_menu = CafeMenu()
 
+    # pass the list of different menus that you want the waitress to handle
     waitress = Waitress([diner_menu, breakfast_menu, cafe_menu])
     waitress.print_menu()
 

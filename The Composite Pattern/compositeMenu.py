@@ -2,7 +2,7 @@ from typing import List
 from menuComponent import MenuComponent
 
 
-class CompositeMenu(MenuComponent):
+class Menu(MenuComponent):
     menu_components: List[MenuComponent]
     name: str
     description: str

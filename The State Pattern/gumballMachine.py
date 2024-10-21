@@ -11,3 +11,6 @@ class GumballMachine:
     def __init__(self, gumballs: int):
         self.gumballs = gumballs
         self.state = self.NO_QUARTER
+
+    def set_state(self, new_state: NO_QUARTER | HAS_QUARTER | SOLD | SOLD_OUT):
+        self.state = new_state

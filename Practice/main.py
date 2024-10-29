@@ -1,20 +1,22 @@
-from ducks import MallardDuck, ToyDuck, SuperDuck, Duck
-from behaviors import SuperQuackBehavior, FastFlyBehavior
+from subject import WeatherStation
+from observer import Observer, CurrentDisplayElement
 
 
 def main():
-    mallard_duck: Duck = MallardDuck()
-    toy_duck: Duck = ToyDuck()
-    super_duck: Duck = SuperDuck()
+    observer1 = CurrentDisplayElement()
 
-    mallard_duck.perform_fly()
-    mallard_duck.swim()
-    mallard_duck.perform_quack()
+    weather_station = WeatherStation()
+    weather_station.add_observer(observer1)
+    observer1.display()
+    print("\n")
 
-    mallard_duck.set_fly_behavior(FastFlyBehavior())
-    mallard_duck.set_quack_behavior(SuperQuackBehavior())
-    mallard_duck.perform_fly()
-    mallard_duck.perform_quack()
+    weather_station.measurements_changed(34.20, 56.5, 0.45)
+
+    weather_station.remove_observer(observer1)
+
+    weather_station.measurements_changed(43.22, 27.5, 0.38)
+
+    observer1.display()
 
 
 if __name__ == "__main__":

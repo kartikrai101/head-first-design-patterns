@@ -14,7 +14,7 @@ def main():
 
     weather_station.remove_observer(observer1)
 
-    weather_station.measurements_changed(43.22, 27.5, 0.38)
+    weather_station.measurements_changed(47.22, 27.5, 0.38)
 
     observer1.display()
 

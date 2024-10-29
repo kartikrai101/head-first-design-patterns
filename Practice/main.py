@@ -1,22 +1,16 @@
-from subject import WeatherStation
-from observer import Observer, CurrentDisplayElement
+from beverage import Beverage, HouseBlend, Decaf, Espresso, DarkRoast
+from decorators import Decorator, Milk, Soy, Mocha
 
 
 def main():
-    observer1 = CurrentDisplayElement()
+    order1: Beverage = HouseBlend()
+    order1_mod1 = Milk(order1)
+    order1_mod2 = Soy(order1_mod1)
 
-    weather_station = WeatherStation()
-    weather_station.add_observer(observer1)
-    observer1.display()
-    print("\n")
-
-    weather_station.measurements_changed(34.20, 56.5, 0.45)
-
-    weather_station.remove_observer(observer1)
-
-    weather_station.measurements_changed(47.22, 27.5, 0.38)
-
-    observer1.display()
+    print(order1_mod2.get_description())
+    print(order1_mod2.cost())
+    print(Mocha(order1_mod2).get_description())
+    print(Mocha(order1_mod2).cost())
 
 
 if __name__ == "__main__":

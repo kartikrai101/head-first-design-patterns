@@ -5,6 +5,7 @@ class Singleton:
     _instance = None
     _lock = Lock()  # to make the instance creation part thread safe
 
+    # overriding the new operator
     def __new__(cls, *args, **kwargs):
         raise Exception("Use get_instance() method to access the Singleton instance")
 

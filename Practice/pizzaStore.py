@@ -1,5 +1,7 @@
 from pizza import Pizza
 from abc import ABC, abstractmethod
+from pizza import CheesePizza, VeggiePizza, IndianPizza
+from ingredientsFactory import IngredientsFactory, NYIngredientsFactory, ChicagoIngredientsFactory
 
 
 class PizzaStore(ABC):
@@ -21,24 +23,28 @@ class PizzaStore(ABC):
 
 
 class NYPizzaStore(PizzaStore):
+    ingredients_factory: IngredientsFactory = NYIngredientsFactory
+
     def create_pizza(self, pizza_type: str) -> Pizza:
         if pizza_type == 'veggie':
-            return NYVeggiePizza()
-        elif pizza_type == 'non-veg':
-            return NYNonVegPizza()
+            return VeggiePizza(self.ingredients_factory)
+        elif pizza_type == 'indian':
+            return IndianPizza(self.ingredients_factory)
         elif pizza_type == 'cheese':
-            return NYCheesePizza()
+            return CheesePizza(self.ingredients_factory)
         else:
             print("We do not serve that pizza yet!")
 
 
 class ChicagoPizzaStore(PizzaStore):
+    ingredients_factory: IngredientsFactory = ChicagoIngredientsFactory
+
     def create_pizza(self, pizza_type: str) -> Pizza:
         if pizza_type == 'veggie':
-            return ChicagoVeggiePizza()
-        elif pizza_type == 'non-veg':
-            return ChicagoNonVegPizza()
+            return VeggiePizza(self.ingredients_factory)
+        elif pizza_type == 'indian':
+            return IndianPizza(self.ingredients_factory)
         elif pizza_type == 'cheese':
-            return ChicagoCheesePizza()
+            return CheesePizza(self.ingredients_factory)
         else:
             print("We do not serve that pizza yet!")

@@ -1,20 +1,19 @@
 from abc import ABC, abstractmethod
-from typing import List
+from ingredients import Sauce, Dough, Cheese, Clam, Pepperoni
+from ingredientsFactory import NYIngredientsFactory, ChicagoIngredientsFactory, IngredientsFactory
 
 
 class Pizza(ABC):
-    name: str
-    sauce: str
-    dough: str
-    toppings: List[str] = []
+    name: str = ""
+    sauce: Sauce = None
+    dough: Dough = None
+    cheese: Cheese = None
+    clam: Clam = None
+    pepperoni: Pepperoni = None
 
+    @abstractmethod
     def prepare(self):
-        print(f"Preparing: {self.name} Pizza")
-        print(f"Tossing dough...")
-        print(f"Adding sauce...")
-        print(f"Adding toppings...")
-        for topping in self.toppings:
-            print(topping)
+        pass
 
     def bake(self):
         print("Baking your pizza...")
@@ -25,20 +24,51 @@ class Pizza(ABC):
     def box(self):
         print("Packing your pizza...")
 
-    def get_name(self):
-        return self.name
+    @abstractmethod
+    def get_description(self):
+        pass
 
 
 class CheesePizza(Pizza):
-    def display(self):
-        print("This is your ordered cheese pizza!")
+    ingredient_factory: IngredientsFactory
+
+    def __init__(self, factory: IngredientsFactory):
+        self.ingredient_factory = factory
+
+    def prepare(self):
+        print("Preparing: " + self.get_name())
+        self.dough = self.ingredient_factory.create_dough()
+        self.sauce = self.ingredient_factory.create_sauce()
+        self.cheese = self.ingredient_factory.create_cheese()
+        self.pepperoni = self.ingredient_factory.create_pepperoni()
+        self.clam = self.ingredient_factory.create_clam()
 
 
-class ClamPizza(Pizza):
-    def display(self):
-        print("This is your ordered clam pizza!")
+class VeggiePizza(Pizza):
+    ingredient_factory: IngredientsFactory
+
+    def __init__(self, factory: IngredientsFactory):
+        self.ingredient_factory = factory
+
+    def prepare(self):
+        print("Preparing: " + self.get_name())
+        self.dough = self.ingredient_factory.create_dough()
+        self.sauce = self.ingredient_factory.create_sauce()
+        self.cheese = self.ingredient_factory.create_cheese()
+        self.pepperoni = self.ingredient_factory.create_pepperoni()
+        self.clam = self.ingredient_factory.create_clam()
 
 
-class NonVegPizza(Pizza):
-    def display(self):
-        print("This is your ordered non-veg pizza!")
+class IndianPizza(Pizza):
+    ingredient_factory: IngredientsFactory
+
+    def __init__(self, factory: IngredientsFactory):
+        self.ingredient_factory = factory
+
+    def prepare(self):
+        print("Preparing: " + self.get_name())
+        self.dough = self.ingredient_factory.create_dough()
+        self.sauce = self.ingredient_factory.create_sauce()
+        self.cheese = self.ingredient_factory.create_cheese()
+        self.pepperoni = self.ingredient_factory.create_pepperoni()
+        self.clam = self.ingredient_factory.create_clam()

@@ -1,8 +1,13 @@
-from remote import Remote
+from beverage import CaffeineBeverage, Coffee, Tea
 
 
 def main():
-    remote = Remote()
+    coffee: CaffeineBeverage = Coffee()
+    tea: CaffeineBeverage = Tea()
+
+    coffee.prepare()
+    print('\n')
+    tea.prepare()
 
 
 if __name__ == "__main__":

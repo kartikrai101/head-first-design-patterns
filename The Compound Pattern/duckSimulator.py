@@ -1,5 +1,6 @@
 from ducks import Quackable, MallardDuck, RedHeadDuck, DuckCall, RubberDuck
 from goose import Goose, GooseAdapter
+from duckDecorators import QuackCounter
 
 
 class DuckSimulator:
@@ -7,14 +8,15 @@ class DuckSimulator:
         duck.quack()
 
     def simulate(self):
-        mallard_duck: Quackable = MallardDuck()
-        redhead_duck: Quackable = RedHeadDuck()
-        duck_call: Quackable = DuckCall()
-        rubber_duck: Quackable = RubberDuck()
+        quack_counter_wrapper: QuackCounter
+        mallard_duck: Quackable = QuackCounter(MallardDuck())
+        redhead_duck: Quackable = QuackCounter(RedHeadDuck())
+        duck_call: Quackable = QuackCounter(DuckCall())
+        rubber_duck: Quackable = QuackCounter(RubberDuck())
         goose: Goose = Goose()
         goose_duck: Quackable = GooseAdapter(goose)
 
-        print("----------------------------------- Duck Simulator -----------------------------------")
+        print("----------------------------------- Duck Simulator(With Decorator) -----------------------------------")
 
         self.simulate_duck(mallard_duck)
         self.simulate_duck(redhead_duck)

@@ -5,7 +5,7 @@ from ducks import Quackable
 class QuackCounter(Quackable):
     # we need to have a reference to the duck that this decorator is wrapping
     duck: Quackable
-    number_of_quacks: int
+    number_of_quacks: int = 0
 
     def __init__(self, duck: Quackable):
         self.duck = duck
